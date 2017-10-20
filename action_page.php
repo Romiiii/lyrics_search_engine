@@ -1,7 +1,7 @@
 
 <?php
 
-require "init.php";
+require "../init.php";
 
 
 echo "action_page has opened";
