@@ -18,11 +18,9 @@ Last name:<br>
 </body>
 </html>
 
-
-
-
-
 <?php
+
+
 require '../init.php'
 
 
