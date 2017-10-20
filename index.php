@@ -37,14 +37,19 @@
 
 <body>
 
-<form  method="post">
-Artist:<br>
-<input type="text" name="artist">
-<br>
-Last name:<br>
-<input type="text" name="lastname">
-<br><br>
-<input type="submit">
+<form method="post">
+	Artist:<br>
+	<input type="text" name="artist">
+	<br>
+	
+	Last name:<br>
+	<input type="text" name="lastname">
+	<br><br>
+	<input type="submit">
+	<br>
+	<input type="radio" name="genre" value="HipHop" checked> HipHop <br>
+	<input type="radio" name="genre" value="Country"> Country <br>
+	<input type="radio" name="genre" value="Pop"> Pop  
 </form>
 
 <p>
