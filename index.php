@@ -20,6 +20,11 @@ Last name:<br>
 
 <?php
 
+<<<<<<< HEAD
 require '../init.php'
+=======
+
+require 'init.php'
+>>>>>>> 4643bf24a68dbfe667b2fce440e65300b33ff223
 
 ?>
