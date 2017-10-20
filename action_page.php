@@ -1,21 +1,23 @@
-
 <?php
 
 require "../init.php";
 
+echo "<br/>You have searched for:<br/>";
+echo "Artist: ", $_POST["artist"] , "<br/>";
+echo "Song Title: ", $_POST["song_title"], "<br/>";
+echo "Year: ", $_POST["year"], "<br/><br/>";
 
-echo "action_page has opened";
-
-echo $_POST["artist"];
 
 
 $params = [
-    'index' => 'my-index',
-    'type' => 'my-type',
+    'index' => 'lyrics',
+    'type' => 'lyric',
     'body' => [
         'query' => [
             'match' => [
-                'Artist' => $_POST["artist"]
+                'artist' => $_POST["artist"],
+				'song' => $_POST["song_title"],
+				'year' => $_POST["year"]
             ]
         ]
     ]
@@ -31,13 +33,13 @@ if ($number_of_results > 10) {
     $x = $number_of_results;
 }
 
-echo $number_of_results;
+echo "<br/>Total number of results: ", $number_of_results, "<br/>";
 
 for ($i = 0; $i < $x; $i++) {
-	//print_r($results['hits']['hits'][$i]['_source']['Song']);
-	$song = $results['hits']['hits'][$i]['_source']['Song'];
-	$artist = $results['hits']['hits'][$i]['_source']['Artist'];
-	$year = $results['hits']['hits'][$i]['_source']['Year'];
+	//print_r($results['hits']['hits'][$i]['_source']['song']);
+	$song = $results['hits']['hits'][$i]['_source']['song'];
+	$artist = $results['hits']['hits'][$i]['_source']['artist'];
+	$year = $results['hits']['hits'][$i]['_source']['year'];
     
     ?>
     <p>

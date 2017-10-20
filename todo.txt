@@ -9,10 +9,11 @@ Advanced search:
 - song 				*song has to be splitted ‘-’ 
 - year
 - artist			*artist has to be splitted ‘-’ 
+- genre				*achteraf invullen maakt specifieker
+- time-period			*achteraf invullen maakt specifieker
 
 Faceted search
-- genre
-- time-period
+
 
 Word clouds
 - pytagcloud: bijvoorbeeld van hoogste paar resultaten als input aan python programmaatje geven
