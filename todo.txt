@@ -1,0 +1,19 @@
+TO DO:
+
+Input:
+- lyrics (rank for best result)
+
+	—> Think about SERP
+
+Advanced search:
+- song 				*song has to be splitted ‘-’ 
+- year
+- artist			*artist has to be splitted ‘-’ 
+
+Faceted search
+- genre
+- time-period
+
+Word clouds
+- pytagcloud: bijvoorbeeld van hoogste paar resultaten als input aan python programmaatje geven
+
