@@ -1,17 +1,16 @@
 <?php
-/*
-{'Pop': 40456, 'Hip-Hop': 24847, 'Rock': 109119, 'Metal': 23720, 
-'Other': 5188, 'Country': 14386, 'Jazz': 7971, 'Electronic': 7961, 
-'Folk': 2243, 'R&B': 3400, 'Indie': 3149}
-*/
 
 require "../init.php";
 
 if(!empty($_POST['genres'])) {
     $genres = $_POST['genres'];
 } else {
-    $genres = ['rock', 'hip-hop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'r&b'];
+    $genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];
 }
+
+echo "SELECTED TIME_PERIOD";
+echo gettype($_POST['time_period']);
+echo $_POST['time_period'];
 
 $params = [
     'index' => 'lyrics',

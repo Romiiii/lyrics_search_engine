@@ -57,7 +57,7 @@
 	<input type="submit"><br><br>
 	</p> Advanced search:</p>
 
-		hip-hop: <input type="checkbox" name="genres[]" value="hip-hop"  /><br />
+		hip-hop: <input type="checkbox" name="genres[]" value="hiphop"  /><br />
 
 		country: <input type="checkbox" name="genres[]" value="country"  /><br /> 
 
@@ -65,7 +65,7 @@
 
 		pop: <input type="checkbox" name="genres[]" value="pop"  /><br />
 
-		r&b: <input type="checkbox" name="genres[]" value="r&b"  /><br />
+		r&b: <input type="checkbox" name="genres[]" value="rb"  /><br />
 
 		folk: <input type="checkbox" name="genres[]" value="folk"  /><br />
 
