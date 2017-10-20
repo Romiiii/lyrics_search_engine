@@ -63,8 +63,19 @@
 
 		rock: <input type="checkbox" name="genres[]" value="rock"  /><br /> 
 
-		pop: <input type="checkbox" name="genres[]" value="pop"  />
+		pop: <input type="checkbox" name="genres[]" value="pop"  /><br />
 
+		r&b: <input type="checkbox" name="genres[]" value="r&b"  /><br />
+
+		folk: <input type="checkbox" name="genres[]" value="folk"  /><br />
+
+		indie: <input type="checkbox" name="genres[]" value="indie"  /><br />
+
+		electronic: <input type="checkbox" name="genres[]" value="electronic"  /><br />
+
+		jazz: <input type="checkbox" name="genres[]" value="jazz"  /><br />
+
+		other: <input type="checkbox" name="genres[]" value="other"  /><br />
 
 	<br><br>
 	<p>

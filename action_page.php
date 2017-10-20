@@ -10,7 +10,7 @@ require "../init.php";
 if(!empty($_POST['genres'])) {
     $genres = $_POST['genres'];
 } else {
-    $genres = ['rock', 'hip-hop', 'country', 'pop'];
+    $genres = ['rock', 'hip-hop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'r&b'];
 }
 
 $params = [
