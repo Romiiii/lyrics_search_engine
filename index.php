@@ -38,24 +38,40 @@
 <body>
 
 <form method="post">
+	Lyrics:<br>
+	<input type="text" name="lyrics">
+	<br>
+
 	Artist:<br>
 	<input type="text" name="artist">
 	<br>
-	
-	Last name:<br>
-	<input type="text" name="lastname">
-	<br><br>
-	<input type="submit">
-	<br>
-	<input type="radio" name="genre" value="HipHop" checked> HipHop <br>
-	<input type="radio" name="genre" value="Country"> Country <br>
-	<input type="radio" name="genre" value="Pop"> Pop  
-</form>
 
-<p>
-	<label for="amount">Time range</label>
-	<input type="text" id="amount" readonly style="border:0;">
-</p>
+	Year:<br>
+	<input type="text" name="year">
+	<br>
+
+	Song title:<br>
+	<input type="text" name="song_title">
+	<br>
+	<br>
+	<input type="submit"><br><br>
+	</p> Advanced search:</p>
+
+		hip-hop: <input type="checkbox" name="genres[]" value="hip-hop"  /><br />
+
+		country: <input type="checkbox" name="genres[]" value="country"  /><br /> 
+
+		rock: <input type="checkbox" name="genres[]" value="rock"  /><br /> 
+
+		pop: <input type="checkbox" name="genres[]" value="pop"  />
+
+
+	<br><br>
+	<p>
+		<label for="amount">Time range</label>
+		<input type="text" id="amount" name="time_period" readonly style="border:0;">
+	</p>
+</form>
 
 <div id="slider-range">
 </div>
