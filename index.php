@@ -20,9 +20,6 @@ Last name:<br>
 
 <?php
 
-
 require '../init.php'
-
-
 
 ?>
