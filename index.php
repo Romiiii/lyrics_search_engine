@@ -2,7 +2,28 @@
 <html>
 <head>
 	<?php
-	require '../init.php'
+	require '../init.php';
+	
+$genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];	
+foreach($genres as $genre) {
+	${$genre . "_params"} = [
+							'index' => 'lyrics',
+							'type' => 'lyric',
+							'body' => [
+								'query' => [
+									'match' => [
+										'genre' => $genre
+									]
+								]
+							]
+						];
+	
+	${$genre. "_query"} = $client->search(${$genre . "_params"});
+	${$genre. "_total"} = ${$genre. "_query"}['hits']['total'];
+
+}
+	
+	
 	?>
 
 	<meta charset="utf-8">
@@ -57,25 +78,25 @@
 	<input type="submit"><br><br>
 	</p> Advanced search:</p>
 
-		hip-hop: <input type="checkbox" name="genres[]" value="hiphop"  checked /><br />
+		Hip-Hop: <input type="checkbox" name="genres[]" value="hiphop"  checked /> (<?php echo $hiphop_total;?>)<br />
 
-		country: <input type="checkbox" name="genres[]" value="country" checked  /><br /> 
+		Country: <input type="checkbox" name="genres[]" value="country" checked  />(<?php echo $country_total;?>)<br /> 
 
-		rock: <input type="checkbox" name="genres[]" value="rock" checked  /><br /> 
+		Rock: <input type="checkbox" name="genres[]" value="rock" checked  /> (<?php echo $rock_total;?>)<br />
 
-		pop: <input type="checkbox" name="genres[]" value="pop" checked  /><br />
+		Pop: <input type="checkbox" name="genres[]" value="pop" checked  />(<?php echo $pop_total;?>)<br />
 
-		r&b: <input type="checkbox" name="genres[]" value="rb" checked  /><br />
+		R&B: <input type="checkbox" name="genres[]" value="rb" checked  />(<?php echo $rb_total;?>)<br />
 
-		folk: <input type="checkbox" name="genres[]" value="folk" checked  /><br />
+		Folk: <input type="checkbox" name="genres[]" value="folk" checked  />(<?php echo $folk_total;?>)<br />
 
-		indie: <input type="checkbox" name="genres[]" value="indie" checked  /><br />
+		Indie: <input type="checkbox" name="genres[]" value="indie" checked  />(<?php echo $indie_total;?>)<br />
 
-		electronic: <input type="checkbox" name="genres[]" value="electronic" checked  /><br />
+		Electronic: <input type="checkbox" name="genres[]" value="electronic" checked  />(<?php echo $electronic_total;?>)<br />
 
-		jazz: <input type="checkbox" name="genres[]" value="jazz" checked  /><br />
+		Jazz: <input type="checkbox" name="genres[]" value="jazz" checked  />(<?php echo $jazz_total;?>)<br />
 
-		other: <input type="checkbox" name="genres[]" value="other" checked  /><br />
+		Other: <input type="checkbox" name="genres[]" value="other" checked  />(<?php echo $other_total;?>)<br />
 
 	<br><br>
 	<p>
