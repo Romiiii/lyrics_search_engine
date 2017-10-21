@@ -8,9 +8,12 @@ if(!empty($_POST['genres'])) {
     $genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];
 }
 
-echo "SELECTED TIME_PERIOD";
-echo gettype($_POST['time_period']);
-echo $_POST['time_period'];
+echo "start year:", substr($_POST['time_period'], 0, 4), "<br/>";
+echo "end year: ", substr($_POST['time_period'], 7, 11), "<br/>";
+
+$start_time = substr($_POST['time_period'], 0, 4);
+$end_time = substr($_POST['time_period'], 7, 11);
+
 
 $params = [
     'index' => 'lyrics',
@@ -19,7 +22,13 @@ $params = [
         'query' => [
             'bool' => [
                 'filter' => [ 
-                    'terms' => [ 'genre' => $genres ]
+                    ['terms' => [ 'genre' => $genres ]],
+					['range' => [
+						'year' => [
+							'gte' => $start_time,
+							'lte' => $end_time,
+						]
+					]]
                 ],
                 'should' => [
                     [ 'match' => [ 'artist' => $_POST["artist"] ] ],

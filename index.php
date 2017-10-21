@@ -39,7 +39,7 @@
 
 <form method="post">
 	Lyrics:<br>
-	<input type="text" name="lyrics">
+	<input type="text" name="lyrics" autofocus>
 	<br>
 
 	Artist:<br>
@@ -57,28 +57,29 @@
 	<input type="submit"><br><br>
 	</p> Advanced search:</p>
 
-		hip-hop: <input type="checkbox" name="genres[]" value="hiphop"  /><br />
+		hip-hop: <input type="checkbox" name="genres[]" value="hiphop"  checked /><br />
 
-		country: <input type="checkbox" name="genres[]" value="country"  /><br /> 
+		country: <input type="checkbox" name="genres[]" value="country" checked  /><br /> 
 
-		rock: <input type="checkbox" name="genres[]" value="rock"  /><br /> 
+		rock: <input type="checkbox" name="genres[]" value="rock" checked  /><br /> 
 
-		pop: <input type="checkbox" name="genres[]" value="pop"  /><br />
+		pop: <input type="checkbox" name="genres[]" value="pop" checked  /><br />
 
-		r&b: <input type="checkbox" name="genres[]" value="rb"  /><br />
+		r&b: <input type="checkbox" name="genres[]" value="rb" checked  /><br />
 
-		folk: <input type="checkbox" name="genres[]" value="folk"  /><br />
+		folk: <input type="checkbox" name="genres[]" value="folk" checked  /><br />
 
-		indie: <input type="checkbox" name="genres[]" value="indie"  /><br />
+		indie: <input type="checkbox" name="genres[]" value="indie" checked  /><br />
 
-		electronic: <input type="checkbox" name="genres[]" value="electronic"  /><br />
+		electronic: <input type="checkbox" name="genres[]" value="electronic" checked  /><br />
 
-		jazz: <input type="checkbox" name="genres[]" value="jazz"  /><br />
+		jazz: <input type="checkbox" name="genres[]" value="jazz" checked  /><br />
 
-		other: <input type="checkbox" name="genres[]" value="other"  /><br />
+		other: <input type="checkbox" name="genres[]" value="other" checked  /><br />
 
 	<br><br>
 	<p>
+		<!-- Our oldest song is from 1968, so maybe start the slider from there -->
 		<label for="amount">Time range</label>
 		<input type="text" id="amount" name="time_period" readonly style="border:0;">
 	</p>
