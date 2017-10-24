@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php
-	require '../init.php';
+	require_once '../init.php';
 	
 $genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];	
 foreach($genres as $genre) {

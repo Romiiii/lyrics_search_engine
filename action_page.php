@@ -1,6 +1,6 @@
 <?php
 
-require "../init.php";
+require_once "../init.php";
 
 if(!empty($_POST['genres'])) {
     $genres = $_POST['genres'];
@@ -57,14 +57,16 @@ for ($i = 0; $i < $x; $i++) {
 	$song = $results['hits']['hits'][$i]['_source']['song'];
 	$artist = $results['hits']['hits'][$i]['_source']['artist'];
 	$year = $results['hits']['hits'][$i]['_source']['year'];
+	$id = $results['hits']['hits'][$i]['_id']
     
     ?>
     <p>
-    <b>Song is</b> <?php echo $song ?>
+    <a href="lyric_page.php?id=<?php echo $id; ?>"><b>Song is</b> <?php echo $song; ?>
     <br>
-    <b>Artist</b>  is <?php echo $artist ?>
+    <b>Artist</b>  is <?php echo $artist; ?>
     <br>
-    <b>Year</b> is <?php echo $year ?>
+    <b>Year</b> is <?php echo $year; ?>
+	</a>
     </p>
     <?php
 }
