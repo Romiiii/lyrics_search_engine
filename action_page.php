@@ -1,3 +1,12 @@
+
+
+<html>
+<body>
+
+
+
+
+
 <?php
 
 require_once "../init.php";
@@ -57,7 +66,15 @@ for ($i = 0; $i < $x; $i++) {
 	$song = $results['hits']['hits'][$i]['_source']['song'];
 	$artist = $results['hits']['hits'][$i]['_source']['artist'];
 	$year = $results['hits']['hits'][$i]['_source']['year'];
-	$id = $results['hits']['hits'][$i]['_id']
+	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
+	$id = $results['hits']['hits'][$i]['_id'];
+	$lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
+	$python = `python wordcloud.py $i $lyrics`;
+	echo $python;
+	
+	
+
+	
     
     ?>
     <p>
@@ -73,10 +90,6 @@ for ($i = 0; $i < $x; $i++) {
 
 
 ?>
-
-
-<html>
-<body>
 
 
 

@@ -42,9 +42,9 @@ foreach($genres as $genre) {
 	$( function() {
 	    $( "#slider-range" ).slider({
 	      range: true,
-	      min: 1900,
+	      min: 1968,
 	      max: 2017,
-	      values: [ 1900, 2017 ],
+	      values: [ 1968, 2017 ],
 	      slide: function( event, ui ) {
 	        $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ]);
 	      }

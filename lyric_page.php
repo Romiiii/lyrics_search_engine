@@ -42,7 +42,7 @@ Genre:  <?php echo $genre; ?>
 
 
 <p>
- <?php echo $lyrics; ?>
+ <?php echo nl2br($lyrics); ?>
 
 
 </p>
