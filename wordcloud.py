@@ -5,12 +5,38 @@ import nltk
 from nltk.corpus import stopwords 
 import re
 from string import punctuation as p
-#print ('entered python')
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+
 i = sys.argv[1]
-print('index is', i)
+
 text = sys.argv[2:]
 
+print("in python")
 
+wordcloud = WordCloud(width = 1000, height = 500).generate(text)
+
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis("off")
+
+# lower max_font_size
+wordcloud = WordCloud(max_font_size=40).generate(text)
+plt.figure()
+plt.imshow(wordcloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+'''
+print("We generated wordcloud")
+
+plt.figure(figsize=(15,8))
+
+plt.imshow(wordcloud)
+
+plt.axis("off")
+
+plt.show()
+'''
 '''
 #print (text)
 #print ('length is', len(sys.argv))

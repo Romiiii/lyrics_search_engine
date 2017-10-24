@@ -69,8 +69,12 @@ for ($i = 0; $i < $x; $i++) {
 	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
 	$id = $results['hits']['hits'][$i]['_id'];
 	$lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
-	$python = `python wordcloud.py $i $lyrics`;
-	echo $python;
+	#if ($i == 1) {
+		
+		#$python = `python wordcloud.py $i $lyrics`;
+		#echo $python;
+		
+	#}
 	
 	
 
@@ -87,6 +91,53 @@ for ($i = 0; $i < $x; $i++) {
     </p>
     <?php
 }
+
+
+
+$params_2 = [
+    'index' => 'lyrics',
+    'type' => 'lyric',
+    'body' => [
+		'size' => 0,
+        'query' => [
+            'bool' => [
+                'filter' => [ 
+                    ['terms' => [ 'genre' => $genres ]],
+					['range' => [
+						'year' => [
+							'gte' => $start_time,
+							'lte' => $end_time,
+						]
+					]]
+                ],
+                'should' => [
+                    [ 'match' => [ 'artist' => $_POST["artist"] ] ],
+                    [ 'match' => [ 'year' => $_POST["year"] ] ],
+                    [ 'match' => [ 'song' => $_POST["song_title"] ] ],
+                    [ 'match_phrase' => ['lyrics' => $_POST['lyrics'] ] ],
+                ]
+            ]
+        ],
+		"aggs" => [
+			"group_by_year" => [
+				"terms" => [
+					"field" => "year.keyword"
+					]
+				]
+			]
+    ]
+];
+
+$results_2 = $client->search($params_2);
+
+for ($i = 0; $i < count($results_2['aggregations']['group_by_year']['buckets']); $i++) {
+	echo $results_2['aggregations']['group_by_year']['buckets'][$i]['key'];
+	echo "<br/> ";
+	echo $results_2['aggregations']['group_by_year']['buckets'][$i]['doc_count'];
+	echo "<br/><br/>";
+}
+
+
 
 
 ?>
