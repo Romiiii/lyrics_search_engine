@@ -60,19 +60,19 @@ foreach($genres as $genre) {
 
 <form method="post">
 	Lyrics:<br>
-	<input type="text" name="lyrics" autofocus>
+	<input type="text" name="lyrics" value="<?php echo isset($_POST['lyrics']) ? $_POST['lyrics'] : '' ?>" autofocus>
 	<br>
 
 	Artist:<br>
-	<input type="text" name="artist">
+	<input type="text" name="artist" value="<?php echo isset($_POST['artist']) ? $_POST['artist'] : '' ?>">
 	<br>
 
 	Year:<br>
-	<input type="text" name="year">
+	<input type="text" name="year" value="<?php echo isset($_POST['year']) ? $_POST['year'] : '' ?>">
 	<br>
 
 	Song title:<br>
-	<input type="text" name="song_title">
+	<input type="text" name="song_title" value="<?php echo isset($_POST['song_title']) ? $_POST['song_title'] : '' ?>">
 	<br>
 	<br>
 	<input type="submit"><br><br>

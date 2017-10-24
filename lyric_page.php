@@ -27,6 +27,8 @@ $lyrics = $results['_source']['lyrics'];
 
 <html>
 <body>
+
+<a href="index.php"> Back to search page</a>
 <p>
 
 </p>
