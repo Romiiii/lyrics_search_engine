@@ -11,6 +11,9 @@ session_start();
 
 	<title>Lyrics Search Engine </title>
 
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<link rel="stylesheet" type="text/css" href="style2.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -91,90 +94,115 @@ session_start();
 		</div>
 	</div>
 
-	<!-- ADVANCED SEARCH WRAPPER -->
-	<div id="advanced-search-wrapper">
-		<div id="advanced-search-col">
-			
-			<!-- Genres checkboxes -->
-			Genres<br>
-			<div id="genres-wrapper">
-				<div id="genre-col">
-					<ul>
-						<li>
-							<input id="hiphop" type="checkbox" name="genres[]" value="hiphop"  checked />
-							<label class='checkbox-label' for="hiphop">HipHop (<?php echo $hiphop_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="country" type="checkbox" name="genres[]" value="country"  checked />
-							<label class='checkbox-label' for="hiphop">Country (<?php echo $hiphop_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="rock" type="checkbox" name="genres[]" value="rock"  checked />
-							<label class='checkbox-label' for="rock">Rock (<?php echo $rock_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="pop" type="checkbox" name="genres[]" value="pop"  checked />
-							<label class='checkbox-label' for="pop">Pop (<?php echo $pop_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="rb" type="checkbox" name="genres[]" value="rb"  checked />
-							<label class='checkbox-label' for="rb">R&B (<?php echo $rb_total;?>) </label>
-						</li>
-					</ul>
+		<!-- ADVANCED SEARCH WRAPPER -->
+		<div id="advanced-search-wrapper">
+
+			<div id="advanced-search-col-left">
+				
+				<!-- Genres checkboxes -->
+				Genres<br>
+				<div id="genres-wrapper">
+					<div id="genre-col">
+						<ul>
+							<li>
+								<input id="hiphop" type="checkbox" name="genres[]" value="hiphop"  checked />
+								<label class='checkbox-label' for="hiphop">HipHop (<?php echo $hiphop_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="country" type="checkbox" name="genres[]" value="country"  checked />
+								<label class='checkbox-label' for="hiphop">Country (<?php echo $hiphop_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="rock" type="checkbox" name="genres[]" value="rock"  checked />
+								<label class='checkbox-label' for="rock">Rock (<?php echo $rock_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="pop" type="checkbox" name="genres[]" value="pop"  checked />
+								<label class='checkbox-label' for="pop">Pop (<?php echo $pop_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="rb" type="checkbox" name="genres[]" value="rb"  checked />
+								<label class='checkbox-label' for="rb">R&B (<?php echo $rb_total;?>) </label>
+							</li>
+						</ul>
+					</div>
+					<div id="genre-col">
+						<ul>
+							<li>
+								<input id="folk" type="checkbox" name="genres[]" value="folk"  checked />
+								<label class='checkbox-label' for="folk">Folk (<?php echo $folk_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="indie" type="checkbox" name="genres[]" value="indie"  checked />
+								<label class='checkbox-label' for="indie">Country (<?php echo $indie_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="electronic" type="checkbox" name="genres[]" value="electronic"  checked />
+								<label class='checkbox-label' for="electronic">Electronic (<?php echo $electronic_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="jazz" type="checkbox" name="genres[]" value="jazz"  checked />
+								<label class='checkbox-label' for="jazz">Pop (<?php echo $jazz_total;?>) </label>
+							</li>
+							<li>
+							 	<input id="other" type="checkbox" name="genres[]" value="other"  checked />
+								<label class='checkbox-label' for="other">Other (<?php echo $other_total;?>) </label>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div id="genre-col">
-					<ul>
-						<li>
-							<input id="folk" type="checkbox" name="genres[]" value="folk"  checked />
-							<label class='checkbox-label' for="folk">Folk (<?php echo $folk_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="indie" type="checkbox" name="genres[]" value="indie"  checked />
-							<label class='checkbox-label' for="indie">Country (<?php echo $indie_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="electronic" type="checkbox" name="genres[]" value="electronic"  checked />
-							<label class='checkbox-label' for="electronic">Electronic (<?php echo $electronic_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="jazz" type="checkbox" name="genres[]" value="jazz"  checked />
-							<label class='checkbox-label' for="jazz">Pop (<?php echo $jazz_total;?>) </label>
-						</li>
-						<li>
-						 	<input id="other" type="checkbox" name="genres[]" value="other"  checked />
-							<label class='checkbox-label' for="other">Other (<?php echo $other_total;?>) </label>
-						</li>
-					</ul>
-				</div>
+				<!-- Time period range slider -->
+	  			<input type="text" id="time_period" name="time_period">
+	 			<div id="slider-range"></div>
 			</div>
-			<!-- Time period range slider -->
-  			<input type="text" id="time_period" name="time_period">
- 			<div id="slider-range"></div>
+
+			<div id="advanced-search-col-right">
+				<!-- Artist field -->
+				<label for="artist">Artist</label>
+				<input type="text" name="artist" value="<?php echo isset($_POST['artist']) ? $_POST['artist'] : '' ?>">
+
+				<!-- Year field -->
+				<label for="year">Year</label>
+				<input type="text" name="year" value="<?php echo isset($_POST['year']) ? $_POST['year'] : '' ?>">
+
+				<!-- Song field -->
+				<label for="song">Song</label>
+				<input type="text" name="song_title" value="<?php echo isset($_POST['song_title']) ? $_POST['song_title'] : '' ?>">
+			</div>
 		</div>
+	</form>
 
-		<div id="advanced-search-col">
-			<!-- Artist field -->
-			<label for="artist">Artist</label>
-			<input type="text" name="artist" value="<?php echo isset($_POST['artist']) ? $_POST['artist'] : '' ?>">
-
-			<!-- Year field -->
-			<label for="year">Year</label>
-			<input type="text" name="year" value="<?php echo isset($_POST['year']) ? $_POST['year'] : '' ?>">
-
-			<!-- Song field -->
-			<label for="song">Song</label>
-			<input type="text" name="song_title" value="<?php echo isset($_POST['song_title']) ? $_POST['song_title'] : '' ?>">
+	<div class='toggler'>
+		<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+			echo '<u>Click here for a timeline of the hits your querie produced!</u>';
+		}
+		?>
+		<div id="timeline-wrapper">
+			<?php
+				if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+					require 'timeline.php';
+				}
+			?>
 		</div>
 	</div>
 
-</form>
+	<script>
+	$(function() {
+	  $('.toggler').click(function() {
+	    $(this).find('div').slideToggle();
+	  });
+	});
+	</script>
 
-<!-- RESULTS -->
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-	require 'action_page.php';
-}
-?>
+	<!-- RESULTS -->
+	<div id="result-card-wrapper">
+		<?php
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+			require 'action_page.php';
+		}
+		?>
+	</div>
 
 </body>
 </html>
