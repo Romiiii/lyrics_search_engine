@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</li>
 							<li>
 							 	<input id="indie" type="checkbox" name="genres[]" value="indie"  <?php if(isset($_POST['genres'])) { if(in_array("indie", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
-								<label class='checkbox-label' for="indie">Country (<?php echo $indie_total;?>) </label>
+								<label class='checkbox-label' for="indie">Indie (<?php echo $indie_total;?>) </label>
 							</li>
 							<li>
 							 	<input id="electronic" type="checkbox" name="genres[]" value="electronic"  <?php if(isset($_POST['genres'])) { if(in_array("electronic", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</li>
 							<li>
 							 	<input id="jazz" type="checkbox" name="genres[]" value="jazz"  <?php if(isset($_POST['genres'])) { if(in_array("jazz", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
-								<label class='checkbox-label' for="jazz">Pop (<?php echo $jazz_total;?>) </label>
+								<label class='checkbox-label' for="jazz">Jazz (<?php echo $jazz_total;?>) </label>
 							</li>
 							<li>
 							 	<input id="other" type="checkbox" name="genres[]" value="other"  <?php if(isset($_POST['genres'])) { if(in_array("other", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";}  ?>/>
