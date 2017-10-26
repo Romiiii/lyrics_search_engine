@@ -90,14 +90,21 @@ $params = [
 
                 'should' => [
 
-                    [ 'match' => [ 'artist' => $_POST["artist"] ] ],
+					[ 'match' => [ 'artist' => [
+						'query' => $_POST["artist"],
+						'boost' => 2 ] ] ],
 
-                    [ 'match' => [ 'year' => $_POST["year"] ] ],
+                    [ 'match' => [ 'year' => [
+						'query' => $_POST["year"],
+						'boost' => 2 ] ] ],
 
-                    [ 'match' => [ 'song' => $_POST["song_title"] ] ],
-					
+                    [ 'match' => [ 'song' => [
+						'query' => $_POST["song_title"],
+						'boost' => 2 ] ] ],
 
-                    [ 'match_phrase' => ['lyrics' => $_POST['lyrics'] ] ],
+                    [ 'match_phrase' => ['lyrics' => [
+						'query' => $_POST['lyrics'],
+						'boost' => 3 ] ] ],
 					
 					[ 'match' => ['lyrics' => $_POST['lyrics'] ] ],
 					
