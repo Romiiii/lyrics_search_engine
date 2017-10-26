@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 							</li>
 							<li>
 							 	<input id="country" type="checkbox" name="genres[]" value="country"  <?php if(isset($_POST['genres'])) { if(in_array("country", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
-								<label class='checkbox-label' for="hiphop">Country (<?php echo $hiphop_total;?>) </label>
+								<label class='checkbox-label' for="country">Country (<?php echo $country_total;?>) </label>
 							</li>
 							<li>
 							 	<input id="rock" type="checkbox" name="genres[]" value="rock"  <?php if(isset($_POST['genres'])) { if(in_array("rock", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
