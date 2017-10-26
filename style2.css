@@ -7,7 +7,6 @@
    color: #a9a9a9;
 }
 
-
 input[type=text], select {
 	width: 100%;
     padding: 12px 20px;
@@ -89,7 +88,7 @@ label[for="lyrics"] {
 
 #lyric-search {
 	width: 30%;
-	margin: auto;
+	margin-left: 100px;
 	padding: 20px;
 	border-radius: 5px;
 }
@@ -99,13 +98,23 @@ label[for="lyrics"] {
     display: flex;
     -webkit-flex-direction: row;
     flex-direction: row;
-    margin: auto;
-    width: 50%;
+    width: 70%;
+    margin-left: 100px;
 }
 
-#advanced-search-col {
-	width: 50%;
+#advanced-search-col-left {
+	width: 65%;
 	padding: 20px;
+}
+
+#advanced-search-col-right {
+	width: 35%;
+	padding: 20px;
+}
+
+#timeline-wrapper {
+	margin-top: 20px;
+	margin-bottom: 0;
 }
 
 #submit-button {
@@ -177,8 +186,9 @@ p {
 }
 
 #result-card-wrapper {
-	width: 50%;
-	margin: auto;
+	width: 80%;
+	margin-left: 100px;
+	margin-top: 0;
 }
 
 #result-card {
@@ -188,11 +198,40 @@ p {
 }
 
 
+
+.ct-chart {
+	font-family: 'Roboto', sans-serif;
+	margin-bottom: -50%;
+}
+
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+	stroke: #FB212F;
+	stroke-width: 8px;
+}
+
+.ct-slice-pie {
+	fill-opacity: 0;
+	stroke: #FB212F;
+	stroke-width: 2.5px;
+}
+
 .wordclouds{
 	width: 50%;
 	float: right;
 	min-height: 60px;
 	height: 100%;
 	background-color: lightblue;
+}
 
+.toggler {
+	margin-left: 110px;
+	margin-bottom: 30px;
+}
+
+div.toggler {
+  cursor: pointer;
+}
+
+div.toggler div {
+  display: none;
 }
