@@ -1,115 +1,115 @@
+
+
+<html>
+<body>
 
-<html>
-<body>
 <script src="wordcloud.js" type="text/javascript"></script>
-
-<p id="demo">
-well</p>
-
-
+
+
+
+
+
+<?php
+
+require_once "../init.php";
+
+if(!empty($_POST['genres'])) {
+    $genres = $_POST['genres'];
+} else {
+    $genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];
+}
+
+$start_time = substr($_POST['time_period'], 13, 4);
+$end_time = substr($_POST['time_period'], 20, 4);
+
+$params = [
+    'index' => 'lyrics',
+    'type' => 'lyric',
+    'body' => [
+        'query' => [
+            'bool' => [
+                'filter' => [ 
+                    ['terms' => [ 'genre' => $genres ]],
+					['range' => [
+						'year' => [
+							'gte' => $start_time,
+							'lte' => $end_time,
+						]
+					]]
+                ],
+                'should' => [
+                    [ 'match' => [ 'artist' => $_POST["artist"] ] ],
+                    [ 'match' => [ 'year' => $_POST["year"] ] ],
+                    [ 'match' => [ 'song' => $_POST["song_title"] ] ],
+                    [ 'match_phrase' => ['lyrics' => $_POST['lyrics'] ] ],
+                ]
+            ]
+        ]
+    ]
+];
+
+$results = $client->search($params);
+
+$number_of_results = $results['hits']['total'];
+
+# SERP with 10 best results
+if ($number_of_results > 10) {
+    $x = 10;
+} else {
+    $x = $number_of_results;
+}
+
+# echo $number_of_results;
+
+# THE RESULTS IN FOR LOOP
+?>
+<div id="result-card-wrapper">
+    <?php
+    for ($i = 0; $i < $x; $i++) {
+    	$song = $results['hits']['hits'][$i]['_source']['song'];
+    	$artist = $results['hits']['hits'][$i]['_source']['artist'];
+    	$year = $results['hits']['hits'][$i]['_source']['year'];
+    	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
+    	$id = $results['hits']['hits'][$i]['_id'];
+    	$lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
+        ?>
+		
+			
+				<a href="lyric_page.php?id=<?php echo $id; ?>">
+        <div id="result-card">
+		
+				
+			<div id="<?php echo "wordcloud_".$i ;?>" class="wordclouds">
+			placeholder
+			</div>
+            <div id='song'>
+                 <?php echo $song; ?>
+            </div>
+		
+            <p>
+            <?php echo $artist, ', ', $year; ?>			
+            </p>
+			
+			
+			
+        </div>
+		</a>
+        <?php
+		
+		if ($i == 0) { 
+			$python = `python text_wordcloud.py $lyrics`;
+			?>
+			<script>
+			list = <?php echo $python;?>
+			WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
+			</script> 
+			<?php
+			
+		} 
+    }
+    ?>
+</div>
 <?php
-
-require_once "../init.php";
-
-if(!empty($_POST['genres'])) {
-    $genres = $_POST['genres'];
-} else {
-    $genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];
-}
-
-echo "start year:", substr($_POST['time_period'], 0, 4), "<br/>";
-echo "end year: ", substr($_POST['time_period'], 7, 11), "<br/>";
-
-$start_time = substr($_POST['time_period'], 0, 4);
-$end_time = substr($_POST['time_period'], 7, 11);
-
-
-$params = [
-    'index' => 'lyrics',
-    'type' => 'lyric',
-    'body' => [
-        'query' => [
-            'bool' => [
-                'filter' => [ 
-                    ['terms' => [ 'genre' => $genres ]],
-					['range' => [
-						'year' => [
-							'gte' => $start_time,
-							'lte' => $end_time,
-						]
-					]]
-                ],
-                'should' => [
-                    [ 'match' => [ 'artist' => $_POST["artist"] ] ],
-                    [ 'match' => [ 'year' => $_POST["year"] ] ],
-                    [ 'match' => [ 'song' => $_POST["song_title"] ] ],
-                    [ 'match_phrase' => ['lyrics' => $_POST['lyrics'] ] ],
-                ]
-            ]
-        ]
-    ]
-];
-
-$results = $client->search($params);
-
-$number_of_results = $results['hits']['total'];
-
-if ($number_of_results > 10) {
-    $x = 10;
-} else {
-    $x = $number_of_results;
-}
-
-echo $number_of_results;
-
-for ($i = 0; $i < $x; $i++) {
-	?>
-	
-	<div id="my_canvas">
-	Here we want the wordcloud
-	</div>
-	
-	<?php
-	
-	$song = $results['hits']['hits'][$i]['_source']['song'];
-	$artist = $results['hits']['hits'][$i]['_source']['artist'];
-	$year = $results['hits']['hits'][$i]['_source']['year'];
-	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
-	$id = $results['hits']['hits'][$i]['_id'];
-	$lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
-	if ($i == 1) { 
-	
-	$python = `python text_wordcloud.py $lyrics`;
-	echo $python;
-	?>
-		
-	<script>
-
-	document.getElementById("demo").innerHTML = "js is running";
-	list = <?php echo $python;?>
-	WordCloud(document.getElementById('my_canvas'), { list: list } );
-	</script> 
-	<?php
-		
-	}
-	
-	
-
-	
-    
-    ?>
-    <p>
-    <a href="lyric_page.php?id=<?php echo $id; ?>"><b>Song is</b> <?php echo $song; ?>
-    <br>
-    <b>Artist</b>  is <?php echo $artist; ?>
-    <br>
-    <b>Year</b> is <?php echo $year; ?>
-	</a>
-    </p>
-    <?php
-}
-
-
 
 $params_2 = [
     'index' => 'lyrics',
@@ -157,12 +157,12 @@ for ($i = 0; $i < count($results_2['aggregations']['group_by_year']['buckets']);
 
 
 
-?>
-
-
-
-
-</body>
-
-</html>
-
+?>
+
+
+
+
+</body>
+
+</html>
+

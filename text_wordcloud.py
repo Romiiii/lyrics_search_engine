@@ -1,13 +1,19 @@
 import sys
-import nltk
-from nltk.corpus import stopwords 
-import re
-from string import punctuation as p
 from collections import Counter
 
-# text is a list split at spaces
-# containing punctuation and \\n and has not been lowercased
 text = sys.argv[1:]
+
+
+c = Counter(text)
+
+list = []
+for word in c:
+	list.append([word, c[word]*10]) 
+	
+print (list)
+
+
+'''
 
 punctuation = re.compile('[{}]+'.format(re.escape(p)))
 
@@ -36,17 +42,8 @@ for word in correct_text:
 	if word not in stops:
 		correct_text_2.append(word)
 
-# correct_text_2 has no stopwords 
-# and is a clean list of all words in the lyrics
 
-c = Counter(correct_text_2)
-
-list = []
-for word in c:
-	list.append([word, c[word]*10]) 
-	
-print (list)
-
+'''
 
 
 

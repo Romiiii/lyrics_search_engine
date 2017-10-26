@@ -1,0 +1,198 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+* {
+   margin: 0;
+   padding: 0;
+   font-family: 'Roboto', sans-serif;
+   color: #a9a9a9;
+}
+
+
+input[type=text], select {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 30%;
+    color: white;
+    padding: 7px 9px;
+    margin: 8px 0;
+    border: 2px solid #ffffff;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12pt;
+}
+
+input[type=submit]:hover {
+    background-color: white;
+    color: #FB212F;
+}
+
+input[type="checkbox"] {
+	padding: 10px;
+}
+
+input[type=checkbox] { 
+	display: none; 
+} /* to hide the checkbox itself */
+
+input[type=checkbox] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox] + label:before { 
+	content: "\f096"; } /* unchecked icon */
+
+input[type=checkbox] + label:before { 
+	letter-spacing: 10px; } /* space between checkbox and label */
+
+input[type=checkbox]:checked + label:before { 
+	content: "\f046"; } /* checked icon */
+
+input[type=checkbox]:checked + label:before { 
+	letter-spacing: 5px; } /* allow space for check mark */
+
+label {
+	color: #a9a9a9;
+}
+
+label[for="lyrics"] {
+	font-size: 30pt;
+	color: white;
+}
+
+.checkbox-label  {
+	font-weight: thin !important;
+}
+
+#list1 {
+	margin: 10px;
+}
+
+
+#header {
+    display: -webkit-flex;
+    display: flex;
+	background-color: #FB212F;
+	width: 100%;
+	height: 300px;
+	margin: 0;
+}
+
+#lyric-search {
+	width: 30%;
+	margin: auto;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+#advanced-search-wrapper {
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin: auto;
+    width: 50%;
+}
+
+#advanced-search-col {
+	width: 50%;
+	padding: 20px;
+}
+
+#submit-button {
+    display: -webkit-flex;
+    display: flex;
+}
+
+#genres-wrapper {
+	padding-top: 3px;
+	display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    width: 100%;
+}
+
+#genre-col {
+	width: 50%;
+	padding: 3px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#slider-range {
+	margin-top: 3px;
+}
+
+#time_period {
+	border: none;
+	font-size: 12pt;
+	padding: 0;
+}
+
+h1 {
+	font-weight: thin;
+	font-size: 18pt;
+}
+
+h2 {
+	font-weight: light;
+	font-size: 12pt;
+}
+
+a, p {
+	color: #3D3D3D;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FB212F;
+}
+
+a {
+	font-size: 20pt;
+	text-decoration: none;
+}
+
+p {
+	font-size: 12pt;
+}
+
+#song {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#result-card-wrapper {
+	width: 50%;
+	margin: auto;
+}
+
+#result-card {
+	padding: 10px;
+	margin: 5px;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 7px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.wordclouds{
+	width: 50%;
+	float: right;
+	min-height: 60px;
+	height: 100%;
+	background-color: lightblue;
+
+}
