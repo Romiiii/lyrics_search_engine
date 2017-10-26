@@ -1,3 +1,8 @@
+<?php
+// Start the session
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,6 +77,9 @@
 <body>
 
 <form method="post">
+	<!-- HIDDEN FORM ELEMENT FOR PAGINATION -->
+	<input type="hidden" name="send" value="hey" />
+
 	<!-- HEADER WITH LYRICS SEARCH BAR -->
 	<div id="header">
 		<div id="lyric-search">

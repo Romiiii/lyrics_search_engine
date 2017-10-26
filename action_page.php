@@ -1,4 +1,12 @@
-
+<?php
+echo "lets see";
+echo "value :".$_SESSION['first_run'];
+if(!isset($_SESSION['first_run'])){
+	# This code will get executed everytime the website is opened in a new browser and not any other time
+    $_SESSION['first_run'] = 1;
+    echo "We only wanna see this once";
+}
+?>
 
 <html>
 <body>
@@ -11,7 +19,8 @@
 
 <?php
 
-require_once "../init.php";
+require_once "../init.php";
+
 
 if(!empty($_POST['genres'])) {
     $genres = $_POST['genres'];
@@ -57,6 +66,13 @@ if ($number_of_results > 10) {
     $x = 10;
 } else {
     $x = $number_of_results;
+}
+
+if (isset($_GET['page_number'])) {
+	print "The page number is: ".$_GET['page_number'];
+	$page_number = $_GET['page_number'];
+} else {
+	print "Page number is: 0";
 }
 
 # echo $number_of_results;
@@ -160,7 +176,17 @@ for ($i = 0; $i < count($results_2['aggregations']['group_by_year']['buckets']);
 ?>
 
 
-
+<a href="index2.php?page_number=<?php echo $page_number + 10;?>"> Link next </a>
+<input type="button" value="Next" onClick="NextPage()">
+
+<script>
+
+function NextPage() {
+	<?php $page_number = $page_number + 10;?>
+	window.location.reload()
+}
+
+</script>
 
 </body>
 
