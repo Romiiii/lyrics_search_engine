@@ -8,8 +8,8 @@ $end_time = substr($_POST['time_period'], 20, 4);
 
 
 $params_2 = [
-    'index' => 'lyrics',
-    'type' => 'lyric',
+    'index' => 'lyrics_new',
+    'type' => 'lyric_new',
     'body' => [
 		'size' => 0,
         'query' => [

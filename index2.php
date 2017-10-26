@@ -68,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	foreach($genres as $genre) {
 		${$genre . "_params"} = [
-								'index' => 'lyrics',
-								'type' => 'lyric',
+								'index' => 'lyrics_new',
+								'type' => 'lyric_new',
 								'body' => [
 									'query' => [
 										'match' => [

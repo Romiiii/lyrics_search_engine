@@ -58,9 +58,9 @@ if (isset($_SESSION['direction'])) {
 
 $params = [
 
-    'index' => 'lyrics',
+    'index' => 'lyrics_new',
 
-    'type' => 'lyric',
+    'type' => 'lyric_new',
 
     'body' => [
 	
@@ -169,7 +169,11 @@ if ($number_of_results > $limit) {
 
     	$id = $results['hits']['hits'][$i]['_id'];
 
-    	$lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
+        $n_lyrics = $results['hits']['hits'][$i]['_source']['n_lyrics'];
+
+    	$n_lyrics = trim(preg_replace('/[\r\n]+/', '\n', $n_lyrics));
+
+        $lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
 
         ?>
 		
@@ -203,16 +207,16 @@ if ($number_of_results > $limit) {
 
         <?php
 		
-		if ($i == 0) { 
-			$python = `python text_wordcloud.py $lyrics`;
-			?>
-			<script>
-			list = <?php echo $python;?>
-			WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
-			</script> 
-			<?php
+		
+		$python = `python text_wordcloud.py $n_lyrics`;
+		?>
+		<script>
+		list = <?php echo $python;?>
+		WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
+		</script> 
+		<?php
 			
-		} 
+	
 
     }
 
