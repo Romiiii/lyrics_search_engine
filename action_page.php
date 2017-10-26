@@ -95,8 +95,13 @@ $params = [
                     [ 'match' => [ 'year' => $_POST["year"] ] ],
 
                     [ 'match' => [ 'song' => $_POST["song_title"] ] ],
+					
 
                     [ 'match_phrase' => ['lyrics' => $_POST['lyrics'] ] ],
+					
+					[ 'match' => ['lyrics' => $_POST['lyrics'] ] ],
+					
+					
 
                 ]
 
