@@ -183,8 +183,8 @@ for ($i = 0; $i < count($results_2['aggregations']['group_by_year']['buckets']);
           ]
         }, {
           width: '900px',
-          height: '300px',
-          high: 18,
+          height: '600px',
+          high: 3,
           low: 0,
           axisX: {
             labelInterpolationFnc: function(value, index) {

@@ -89,6 +89,7 @@ label[for="lyrics"] {
 #lyric-search {
 	width: 30%;
 	margin-left: 100px;
+	margin-top: 55px;
 	padding: 20px;
 	border-radius: 5px;
 }
@@ -114,7 +115,7 @@ label[for="lyrics"] {
 
 #timeline-wrapper {
 	margin-top: 20px;
-	margin-bottom: 0;
+	margin-bottom: -20%;
 }
 
 #submit-button {
@@ -188,7 +189,6 @@ p {
 #result-card-wrapper {
 	width: 80%;
 	margin-left: 100px;
-	margin-top: 0;
 }
 
 #result-card {
@@ -197,11 +197,13 @@ p {
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 7px 0 rgba(0, 0, 0, 0.1);
 }
 
-
+#songtext-wrapper {
+	margin: 20px;
+	margin-left: 100px;
+}
 
 .ct-chart {
 	font-family: 'Roboto', sans-serif;
-	margin-bottom: -50%;
 }
 
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
@@ -225,7 +227,6 @@ p {
 
 .toggler {
 	margin-left: 110px;
-	margin-bottom: 30px;
 }
 
 div.toggler {

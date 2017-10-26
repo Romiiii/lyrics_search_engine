@@ -4,9 +4,6 @@ require_once "../init.php";
 
 $id = $_GET['id'];
 
-
-
-
 $params = [
     'index' => 'lyrics',
     'type' => 'lyric',
@@ -14,8 +11,6 @@ $params = [
 ];
 
 $results = $client->get($params);
-
-
 
 $song = $results['_source']['song'];
 $artist = $results['_source']['artist'];
@@ -26,26 +21,24 @@ $lyrics = $results['_source']['lyrics'];
 ?>
 
 <html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style2.css">
+</head>
+
 <body>
+<div id="songtext-wrapper">
+	<a href="index2.php"> << back to result page</a>
 
-<a href="index.php"> Back to search page</a>
-<p>
+	<p>
+	<br><?php echo $song; ?><br>
+	By: <?php echo $artist; ?><br>
+	Year: <?php echo $year; ?> <br>
+	Genre:  <?php echo $genre; ?><br><br>
 
-</p>
-
-<?php echo $song; ?>
-<br>
-By <?php echo $artist; ?>
-<br>
-Year: <?php echo $year; ?> <br>
-Genre:  <?php echo $genre; ?>
-
-
-<p>
- <?php echo nl2br($lyrics); ?>
-
-
-</p>
+	Songtext: <br><br>
+	<?php echo nl2br($lyrics); ?>
+	</p>
+</div>
 
 
 
