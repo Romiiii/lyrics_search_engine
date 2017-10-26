@@ -236,3 +236,19 @@ div.toggler {
 div.toggler div {
   display: none;
 }
+
+#prev {
+	width : 100px; 
+	float: left;
+	margin: 10px;
+	border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+#next {
+	width: 100px;
+	float: right;
+	border: 2px solid #ccc;
+    border-radius: 4px;
+	text-align: middle;
+}
