@@ -9,7 +9,9 @@
 
 require_once "../init.php";
 
-
+if(isset($_SESSION['page'])) {
+	echo "page number".$_SESSION['page'];
+}
 
 if(!empty($_POST['genres'])) {
 
@@ -92,19 +94,19 @@ $params = [
 
 					[ 'match' => [ 'artist' => [
 						'query' => $_POST["artist"],
-						'boost' => 2 ] ] ],
+						'boost' => 3 ] ] ],
 
                     [ 'match' => [ 'year' => [
 						'query' => $_POST["year"],
-						'boost' => 2 ] ] ],
+						'boost' => 3 ] ] ],
 
                     [ 'match' => [ 'song' => [
 						'query' => $_POST["song_title"],
-						'boost' => 2 ] ] ],
+						'boost' => 3 ] ] ],
 
                     [ 'match_phrase' => ['lyrics' => [
 						'query' => $_POST['lyrics'],
-						'boost' => 3 ] ] ],
+						'boost' => 2 ] ] ],
 					
 					[ 'match' => ['lyrics' => $_POST['lyrics'] ] ],
 					
@@ -224,11 +226,17 @@ if ($number_of_results > $limit) {
 
 </div>
 
+<div>
+<div id="prev">
 <a OnClick=PrevPage()> Previous </a>
+</div>
 
 
+<div id="next">
 <a OnClick=NextPage()> Next  </a>
+</div>
 
+</div>
 <script>
 
 function NextPage() {
