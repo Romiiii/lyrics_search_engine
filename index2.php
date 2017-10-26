@@ -56,6 +56,14 @@ session_start();
 	<?php
 	require_once '../init.php';
 	
+/*	
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	if (isset($_SESSION['page'])) {
+		echo "hey in session page";
+		$_SESSION['page'] = -1;
+	}
+}
+*/	
 	$genres = ['rock', 'hiphop', 'country', 'pop', 'metal', 'other', 'jazz', 'electronic', 'indie', 'folk', 'rb'];	
 	
 	foreach($genres as $genre) {
@@ -105,23 +113,23 @@ session_start();
 					<div id="genre-col">
 						<ul>
 							<li>
-								<input id="hiphop" type="checkbox" name="genres[]" value="hiphop"  checked />
+								<input id="hiphop" type="checkbox" name="genres[]" value="hiphop"   <?php if(isset($_POST['genres'])) { if(in_array("hiphop", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="hiphop">HipHop (<?php echo $hiphop_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="country" type="checkbox" name="genres[]" value="country"  checked />
+							 	<input id="country" type="checkbox" name="genres[]" value="country"  <?php if(isset($_POST['genres'])) { if(in_array("country", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="hiphop">Country (<?php echo $hiphop_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="rock" type="checkbox" name="genres[]" value="rock"  checked />
+							 	<input id="rock" type="checkbox" name="genres[]" value="rock"  <?php if(isset($_POST['genres'])) { if(in_array("rock", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="rock">Rock (<?php echo $rock_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="pop" type="checkbox" name="genres[]" value="pop"  checked />
+							 	<input id="pop" type="checkbox" name="genres[]" value="pop"  <?php if(isset($_POST['genres'])) { if(in_array("pop", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="pop">Pop (<?php echo $pop_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="rb" type="checkbox" name="genres[]" value="rb"  checked />
+							 	<input id="rb" type="checkbox" name="genres[]" value="rb"  <?php if(isset($_POST['genres'])) { if(in_array("rb", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="rb">R&B (<?php echo $rb_total;?>) </label>
 							</li>
 						</ul>
@@ -129,23 +137,23 @@ session_start();
 					<div id="genre-col">
 						<ul>
 							<li>
-								<input id="folk" type="checkbox" name="genres[]" value="folk"  checked />
+								<input id="folk" type="checkbox" name="genres[]" value="folk"  <?php if(isset($_POST['genres'])) { if(in_array("folk", $_POST['genres'])){ echo "checked='checked'";}}else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="folk">Folk (<?php echo $folk_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="indie" type="checkbox" name="genres[]" value="indie"  checked />
+							 	<input id="indie" type="checkbox" name="genres[]" value="indie"  <?php if(isset($_POST['genres'])) { if(in_array("indie", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="indie">Country (<?php echo $indie_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="electronic" type="checkbox" name="genres[]" value="electronic"  checked />
+							 	<input id="electronic" type="checkbox" name="genres[]" value="electronic"  <?php if(isset($_POST['genres'])) { if(in_array("electronic", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="electronic">Electronic (<?php echo $electronic_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="jazz" type="checkbox" name="genres[]" value="jazz"  checked />
+							 	<input id="jazz" type="checkbox" name="genres[]" value="jazz"  <?php if(isset($_POST['genres'])) { if(in_array("jazz", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";} ?> />
 								<label class='checkbox-label' for="jazz">Pop (<?php echo $jazz_total;?>) </label>
 							</li>
 							<li>
-							 	<input id="other" type="checkbox" name="genres[]" value="other"  checked />
+							 	<input id="other" type="checkbox" name="genres[]" value="other"  <?php if(isset($_POST['genres'])) { if(in_array("other", $_POST['genres'])){ echo "checked='checked'";}} else { echo "checked='checked'";}  ?>/>
 								<label class='checkbox-label' for="other">Other (<?php echo $other_total;?>) </label>
 							</li>
 						</ul>
@@ -175,7 +183,7 @@ session_start();
 	<div class='toggler'>
 		<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-			echo '<u>Click here for a timeline of the hits your querie produced!</u>';
+			echo '<u>Click here for a timeline of the hits your query produced!</u>';
 		}
 		?>
 		<div id="timeline-wrapper">
