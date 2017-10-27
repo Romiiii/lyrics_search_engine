@@ -245,10 +245,32 @@ div.toggler div {
     border-radius: 4px;
 }
 
+#page_num {
+	float: middle;
+}
+
 #next {
 	width: 100px;
 	float: right;
 	border: 2px solid #ccc;
     border-radius: 4px;
 	text-align: middle;
+}
+
+#guess_genre {	
+	font-size: 5 pt;
+}
+
+
+#genre_submit {
+	width: 30%;
+    color: black;
+    padding: 7px 9px;
+    margin: 8px 0;
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12pt;
+	
 }

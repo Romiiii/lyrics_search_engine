@@ -39,7 +39,7 @@ if (isset($_SESSION['direction'])) {
 			$offset = $limit * $page;
 			echo "page session is: ".$page;
 			echo "limit is ".$limit; 
-		} 
+		}
 	} else if ($_SESSION['direction'] == 0){
 		if (isset($_SESSION['page'])) {
 			if ($_SESSION['page'] > 0) {
@@ -229,6 +229,21 @@ if ($number_of_results > $limit) {
 <div>
 <div id="prev">
 <a OnClick=PrevPage()> Previous </a>
+</div>
+
+<div id="page_num">
+
+<?php
+
+if (isset($_SESSION['page'])) { 
+	echo "Page: ".$page; 
+	echo "ses: ".$_SESSION['page'];
+} else {
+	echo "Page: 1"; 
+} 
+
+?>
+
 </div>
 
 

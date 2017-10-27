@@ -211,6 +211,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		?>
 	</div>
+	
+	<div id="guess_genre">
+	<a href="guess_genre.php">Guess Genre </a>
+	
+	</div>
 
 </body>
 </html>
