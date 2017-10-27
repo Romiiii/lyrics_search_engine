@@ -4,6 +4,7 @@ require_once "../init.php";
 
 $id = $_GET['id'];
 
+
 $params = [
     'index' => 'lyrics_new',
     'type' => 'lyric_new',

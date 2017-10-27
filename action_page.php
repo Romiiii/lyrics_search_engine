@@ -116,7 +116,17 @@ $params = [
 
             ]
 
+        ],
+		
+		'highlight' => [
+            // 'pre_tags' => ["<em>"], // not required
+            // 'post_tags' => ["</em>"], // not required
+            'fields' => [
+                'lyrics' => new \stdClass()
+            ],
+            'require_field_match' => false
         ]
+		
 
     ]
 
@@ -129,8 +139,6 @@ $results = $client->search($params);
 
 
 $number_of_results = $results['hits']['total'];
-
-
 
 
 # SERP with 10 best results
@@ -168,6 +176,9 @@ if ($number_of_results > $limit) {
     	$year = $results['hits']['hits'][$i]['_source']['year'];
 
     	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
+		
+		$high_lyrics = $results['hits']['hits'][$i]['highlight']['lyrics'];
+
 
     	$id = $results['hits']['hits'][$i]['_id'];
 
@@ -176,12 +187,11 @@ if ($number_of_results > $limit) {
     	$n_lyrics = trim(preg_replace('/[\r\n]+/', '\n', $n_lyrics));
 
         $lyrics = trim(preg_replace('/[\r\n]+/', '\n', $lyrics));
-
         ?>
 		
 			
 		
-		<a href="lyric_page.php?id=<?php echo $id; ?>">
+		<a href="lyric_page.php?id=<?php echo $id; ?>&h_ly=<?php echo $high_lyrics;?>">
         <div id="result-card">
 		
 				
@@ -199,7 +209,7 @@ if ($number_of_results > $limit) {
             <p>
 
             <?php echo $artist, ', ', $year; ?>
-			
+			<?php echo "<br/><br/> \"".$high_lyrics[0]."\""; ?>
             </p>
 			
 			
