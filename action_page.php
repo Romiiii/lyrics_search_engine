@@ -59,9 +59,7 @@ if (isset($_SESSION['direction'])) {
 # from offset to offset + limit
 
 $params = [
-
     'index' => 'lyrics_new',
-
     'type' => 'lyric_new',
 
     'body' => [
@@ -191,7 +189,7 @@ if ($number_of_results > $limit) {
 		
 			
 		
-		<a href="lyric_page.php?id=<?php echo $id; ?>&h_ly=<?php echo $high_lyrics;?>">
+		
         <div id="result-card">
 		
 				
@@ -201,16 +199,15 @@ if ($number_of_results > $limit) {
 
             <div id='song'>
 
-                 <?php echo $song; ?>
+                 <a href="lyric_page.php?id=<?php echo $id; ?>"><?php echo $song; ?></a>
 
             </div>
 		
 
-            <p>
-
+            <div id="result-snippet">
             <?php echo $artist, ', ', $year; ?>
 			<?php echo "<br/><br/> \"".$high_lyrics[0]."\""; ?>
-            </p>
+            </div>
 			
 			
 			

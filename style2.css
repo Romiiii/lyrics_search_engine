@@ -86,6 +86,16 @@ label[for="lyrics"] {
 	margin: 0;
 }
 
+#header2 {
+    display: -webkit-flex;
+    display: flex;
+	background-color: #FB212F;
+	width: 100%;
+	height: 460px;
+	margin: 0;
+}
+
+
 #lyric-search {
 	width: 30%;
 	margin-left: 100px;
@@ -264,13 +274,31 @@ div.toggler div {
 
 #genre_submit {
 	width: 30%;
-    color: black;
+    color: white;
     padding: 7px 9px;
     margin: 8px 0;
-    border: 2px solid black;
+    border: 2px solid white;
     background-color: transparent;
     border-radius: 4px;
     cursor: pointer;
     font-size: 12pt;
-	
+}
+
+#result-snippet {
+	width: 50%;
+	font-size: 12pt;
+	color:grey;
+	font-weight: thin;
+}
+h2 {
+	font-size: 25pt;
+	font-weight: normal;
+	color: white;
+}
+
+#genre-result {
+	font-size: 30pt;
+	font-weight: normal;
+	color: grey;
+	margin-left: 100px;
 }
