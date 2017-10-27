@@ -16,6 +16,9 @@
 
 		<br><br>
 		<input type="submit" value="Guess genre" id="genre_submit">
+		<div id="guess-genre-link">
+				<a id="guess-genre-link" href="index2.php"><br><u> >> Or, go back to the search engine!</u></a>
+			</div>
 		</form>
 	</div>
 </div>

@@ -9,9 +9,7 @@
 
 require_once "../init.php";
 
-if(isset($_SESSION['page'])) {
-	echo "page number".$_SESSION['page'];
-}
+
 
 if(!empty($_POST['genres'])) {
 
@@ -25,14 +23,23 @@ if(!empty($_POST['genres'])) {
 
 
 
+
 $start_time = substr($_POST['time_period'], 13, 4);
 
 $end_time = substr($_POST['time_period'], 20, 4);
 
 $limit = 10;
 $offset = 0;
+
+/*
 if (isset($_SESSION['direction'])) {
-	if ($_SESSION['direction'] == 1) {
+	if (!isset($_SESSION['page'])) {
+		unset($_SESSION['direction']);
+		$_SESSION['page'] = 0;
+		$page = 0;
+		$offset = 0;
+		echo "you win";
+	} else if ($_SESSION['direction'] == 1) {
 		if (isset($_SESSION['page'])) {
 			$_SESSION['page'] = $_SESSION['page'] + 1;
 			$page = $_SESSION['page'];
@@ -48,13 +55,69 @@ if (isset($_SESSION['direction'])) {
 				$offset = $limit * $page;
 				echo "page session is: ".$page;
 				echo "limit is ".$limit; 
+			} else if ($_SESSION['page'] == 0) {
+				$page = $_SESSION['page'];
+				$offset = $limit * $page;
 			}
 		} 
 	}	
+} else {
+	echo "Direction is not set";
+	if (!isset($_SESSION['page'])) {
+		$_SESSION['page'] = 0;
+		$page = 0;
+		$offset = 0;
+	}
 }
 
+if (isset($_SESSION['page'])) {
+	if(isset($_SESSION['direction'])) {
+		if ($_SESSION['direction'] == 1) {
+			echo "yes page yes direction +1 ";
+		
+			$page = $_SESSION['page'];
+			$page = $page++;
+			$_SESSION['page'] = $page;
+			#$page = $_SESSION['page'];
+			echo $_SESSION['page']."andd page".$page;
+			
+			$offset = $limit * $page;
+		} else {
+			$_SESSION['page'] = $_SESSION['page'] - 1;
+			$page = $_SESSION['page'];
+			
+			$offset = $limit * $page;
+		}
+	} else { 
+	echo "no direction";
+		$_SESSION['page'] = 0;
+	$page = $_SESSION['page'];
+	$offset = 0;
+	}
+		
+} else {
+	$_SESSION['page'] = 0;
+	$page = $_SESSION['page'];
+	$offset = 0;
+}
+*/
+/*
 
-
+if (isset($_SESSION['direction'])) {
+	echo "direction is: ".$_SESSION['direction'];
+	if (isset($_SESSION['page'])) {
+		echo "page is set : ".$_SESSION['page'];
+	} else {
+		echo "page is not set : ";
+	}
+} else {
+	echo "direction is not set: ";
+	if (isset($_SESSION['page'])) {
+		echo "page is set : ".$_SESSION['page'];
+	} else {
+		echo "page is not set : ";
+	}
+}*/
 
 # from offset to offset + limit
 
@@ -216,11 +279,11 @@ if ($number_of_results > $limit) {
         <?php
 		
 		
-		$python = `python text_wordcloud.py $n_lyrics`;
+		#$python = `python text_wordcloud.py $n_lyrics`;
 		?>
 		<script>
-		list = <?php echo $python;?>
-		WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
+		#list = <?php echo $python;?>
+		#WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
 		</script> 
 		<?php
 			
@@ -232,27 +295,28 @@ if ($number_of_results > $limit) {
 
 </div>
 
-<div>
-<div id="prev">
-<a OnClick=PrevPage()> Previous </a>
-</div>
+
 
 <div id="page_num">
 
 <?php
-/*
+
 if (isset($_SESSION['page'])) { 
 	echo "Page: ".$page; 
 	echo "ses: ".$_SESSION['page'];
 } else {
-	echo "Page: 1"; 
+	echo "Page: 1 Default"; 
 } 
-*/
+
 
 ?>
 
 </div>
 
+<div>
+<div id="prev">
+<a OnClick=PrevPage()> Previous </a>
+</div>
 
 <div id="next">
 <a OnClick=NextPage()> Next  </a>
@@ -262,17 +326,20 @@ if (isset($_SESSION['page'])) {
 <script>
 
 function NextPage() {
-	window.location.reload();
-	<?php
+		<?php
+	#$_SESSION['page'] = $_SESSION['page'] + 1;
 	$_SESSION['direction'] = 1;
 	?>
+	window.location.reload();
+
 }
 
 function PrevPage() {
-	window.location.reload();
 	<?php
-	$_SESSION['direction'] = 0;
+	$_SESSION['page'] = $_SESSION['page'] - 1;
 	?>
+	window.location.reload();
+	
 }
 
 </script>
