@@ -1,0 +1,160 @@
+<topic number="1">
+    <query>Jezus Christ</query>
+    <faceted_search>2000-2017</faceted_search>
+    <description>
+    Find songs about Jezus Christ from after the year 2000. The songtext has to really be about Jezus Christ, the historical figure, in stead of just Jezus or Christ used in an informal way, like in a curse word.
+    </description>
+</topic>
+
+Claartje (R = 10, N = 0):
+1. Judas, By Dover : RELEVANT
+2. Go tell it on the mountain, By Frank Sinatra : RELEVANT
+3. Singer s song, By Delirious : RELEVANT
+4. Go tell it on the mountain, By Diana Ross : RELEVANT
+5. Jesus Christ, By Gay Dad : RELEVANT
+6. Jesus Christ what a man, By Bobby Bare : RELEVANT
+7. Go tell it on the mountain, By Bill Gaither : RELEVANT
+8. Fucked reality, By Choking Victim : RELEVANT
+9. Smile, By Drain S T H : RELEVANT
+10. Oh holy night, By Christina Aguilera : RELEVANT
+
+Romi (R = 9, N = 1):
+1. Judas, By Dover : RELEVANT
+2. Go tell it on the mountain, By Frank Sinatra : RELEVANT
+3. Singer s song, By Delirious : RELEVANT
+4. Go tell it on the mountain, By Diana Ross : RELEVANT
+5. Jesus Christ, By Gay Dad : RELEVANT
+6. Jesus Christ what a man, By Bobby Bare : RELEVANT
+7. Go tell it on the mountain, By Bill Gaither : RELEVANT
+8. Fucked reality, By Choking Victim : RELEVANT
+9. Smile, By Drain S T H : IRRELEVANT
+10. Oh holy night, By Christina Aguilera : RELEVANT
+
+<topic number="2">
+    <query>Mississipi</query>
+    <advanced_search>Genre: Folk</advanced_search>
+    <description>
+    We want to finds songs about the Mississipi river.
+    </description>
+</topic>
+
+Claartje (R = 3, N = 7):
+1. Southern girl, By Amos Lee : IRRELEVANT
+2. Souther girl, By Amos lees : IRRELEVANT
+3. Tumbleweed, By Bill Miller : RELEVANT
+4. Lights out in tupelo, By Dan May : RELEVANT
+5. The war of 1812, By Arrogant Worms : RELEVANT
+6. Come home to me, By Alathea : IRRELEVANT
+7. If i never spend a morning without you, By Andy M Stewart : IRRELEVANT
+8. Mary mheaigi s frank mors the trip to lerwick, By Andy M Stewart : IRRELEVANT
+9. The lea rig, By Andy M Stewart : IRRELEVANT
+10. Queen amangst the heather, By Andy M Stewart : IRRELEVANT
+
+Romi (R = 3, N = 7):
+1. Southern girl, By Amos Lee : IRRELEVANT
+2. Souther girl, By Amos lees : IRRELEVANT
+3. Tumbleweed, By Bill Miller : RELEVANT
+4. Lights out in tupelo, By Dan May : RELEVANT
+5. The war of 1812, By Arrogant Worms : RELEVANT
+6. Come home to me, By Alathea : IRRELEVANT
+7. If i never spend a morning without you, By Andy M Stewart : IRRELEVANT
+8. Mary mheaigi s frank mors the trip to lerwick, By Andy M Stewart : IRRELEVANT
+9. The lea rig, By Andy M Stewart : IRRELEVANT
+10. Queen amangst the heather, By Andy M Stewart : IRRELEVANT
+
+<topic number="3">
+    <query>Amsterdam</query>
+    <advanced_search>Genre: Hip-hop</advanced_search>
+    <description>
+    We want to find hiphop songs about the city Amsterdam.
+    </description>
+</topic>
+
+Claartje (R = 10, N = 0):
+1. Ab 18, By Bushido : RELEVANT
+2. World wide kush, By Dopetrackz : RELEVANT
+3. Geembo s theme, By Arsonists : RELEVANT
+4. Runnin out of bud, By Eightball Mjg : RELEVANT
+5. Black and brow, By Black Milk : RELEVANT
+6. I'm gone, By Andre Nickatina : RELEVANT
+7. Animal ambition, By 50 Cent : RELEVANT
+8. I run it, By Chamillionaire : RELEVANT
+9. Western ways, By Delinquent Habits : RELEVANT
+10. Spark another owl, By Cypress Hill : RELEVANT
+
+Romi (R = 10, N = 0):
+1. Ab 18, By Bushido : RELEVANT
+2. World wide kush, By Dopetrackz : RELEVANT
+3. Geembo s theme, By Arsonists : RELEVANT
+4. Runnin out of bud, By Eightball Mjg : RELEVANT
+5. Black and brow, By Black Milk : RELEVANT
+6. I'm gone, By Andre Nickatina : RELEVANT
+7. Animal ambition, By 50 Cent : RELEVANT
+8. I run it, By Chamillionaire : RELEVANT
+9. Western ways, By Delinquent Habits : RELEVANT
+10. Spark another owl, By Cypress Hill : RELEVANT
+
+<topic number="4">
+    <query>Cowboy</query>
+    <advanced_search>Genre: Pop</advanced_search>
+    <description>
+    We want to find pop songs about cowboys (a man who herds and tends cattle on a ranch).
+    </description>
+</topic>
+
+Claartje: (R = 5, N = 5)
+1. Cocaine cowboy, By Akon : IRRELEVANT
+2. Cowboy, By Billy Crawford : RELEVANT
+3. The world could use a cowboy, By Adam Gregory : RELEVANT
+4. Rhinestone cowboy 2008 remix, By Glen Campbell : RELEVANT
+5. Rhinestone cowboy 2008 remix, By Glen Campbell : RELEVANT
+6. Cowboy take me away, By Dixie Chicks : IRRELEVANT
+7. Ohh stick you, By Daphne Celeste : IRRELEVANT
+8. Mister man, By Culture Club : IRRELEVANT
+9. The cowboy lives forever, By Dixie Chicks : RELEVANT
+10. Ooh stick you, By Daphne Celeste : IRRELEVANT
+
+Romi: (R = 6, N = 4)
+1. Cocaine cowboy, By Akon : IRRELEVANT
+2. Cowboy, By Billy Crawford : RELEVANT
+3. The world could use a cowboy, By Adam Gregory : RELEVANT
+4. Rhinestone cowboy 2008 remix, By Glen Campbell : RELEVANT
+5. Rhinestone cowboy 2008 remix, By Glen Campbell : RELEVANT
+6. Cowboy take me away, By Dixie Chicks : RELEVANT
+7. Ohh stick you, By Daphne Celeste : IRRELEVANT
+8. Mister man, By Culture Club : IRRELEVANT
+9. The cowboy lives forever, By Dixie Chicks : RELEVANT
+10. Ooh stick you, By Daphne Celeste : IRRELEVANT
+
+
+<topic number="5">
+    <query>Computer</query>
+    <faceted_search>1968 - 1992</faceted_search>
+    <description>
+    We want to find songs about the computer from before 1985.
+    </description>
+</topic>
+
+Claartje (R = 4, N = 6):
+1. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : RELEVANT
+2. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : RELEVANT
+3. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : RELEVANT
+4. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : RELEVANT
+5. My love my life, By Abba : IRRELEVANT
+6. Tiger, By Abba : IRRELEVANT
+7. Arrival, By Abba : IRRELEVANT
+8. Turn it on, By 38 Special : IRRELEVANT
+9. You got the deal, By 38 Special : IRRELEVANT
+10. Money honey, By 38 special : IRRELEVANT
+
+Romi (R = 0, N = 10):
+1. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : IRRELEVANT
+2. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : IRRELEVANT
+3. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : IRRELEVANT
+4. Karn evil 9 1st impression part 1, By Emerson Lake Palmer : IRRELEVANT
+5. My love my life, By Abba : IRRELEVANT
+6. Tiger, By Abba : IRRELEVANT
+7. Arrival, By Abba : IRRELEVANT
+8. Turn it on, By 38 Special : IRRELEVANT
+9. You got the deal, By 38 Special : IRRELEVANT
+10. Money honey, By 38 special : IRRELEVANT
