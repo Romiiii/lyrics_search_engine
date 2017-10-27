@@ -191,7 +191,7 @@ if ($number_of_results > $limit) {
 		
 			
 		
-		<a href="lyric_page.php?id=<?php echo $id; ?>&h_ly=<?php echo $high_lyrics;?>">
+		<a href="lyric_page.php?id=<?php echo $id; ?>">
         <div id="result-card">
 		
 				
