@@ -99,6 +99,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<div id="submit-button">
 				<input type="submit" value="Search">
 			</div>
+			<div id="guess-genre-link">
+				<a id="guess-genre-link" href="guess_genre.php"><br><u> >> Or, go to the lyric genre classifier!</u></a>
+			</div>
 		</div>
 	</div>
 
@@ -183,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<div class='toggler'>
 		<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
-			echo '<u>Click here for a timeline of the hits your query produced!</u>';
+			echo '<u>Click here for a timeline of the hits your query produced!<br></u>';
 		}
 		?>
 		<div id="timeline-wrapper">
@@ -211,9 +214,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		?>
 	</div>
-	
+	<!--
 	<div id="guess_genre">
-	<a href="guess_genre.php">Guess Genre </a>
+	<a href="guess_genre.php">Guess Genre </a>-->
 	
 	</div>
 

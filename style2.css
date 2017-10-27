@@ -69,7 +69,7 @@ label[for="lyrics"] {
 }
 
 .checkbox-label  {
-	font-weight: thin !important;
+	font-weight: normal;
 }
 
 #list1 {
@@ -125,7 +125,7 @@ label[for="lyrics"] {
 
 #timeline-wrapper {
 	margin-top: 20px;
-	margin-bottom: -20%;
+	
 }
 
 #submit-button {
@@ -301,4 +301,9 @@ h2 {
 	font-weight: normal;
 	color: grey;
 	margin-left: 100px;
+}
+
+#guess-genre-link {
+	font-size: 10pt !important;
+	color: white !important;
 }
