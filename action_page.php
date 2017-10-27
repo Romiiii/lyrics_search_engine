@@ -240,13 +240,14 @@ if ($number_of_results > $limit) {
 <div id="page_num">
 
 <?php
-
+/*
 if (isset($_SESSION['page'])) { 
 	echo "Page: ".$page; 
 	echo "ses: ".$_SESSION['page'];
 } else {
 	echo "Page: 1"; 
 } 
+*/
 
 ?>
 
