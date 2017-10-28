@@ -256,7 +256,13 @@ div.toggler div {
 }
 
 #page_num {
-	float: middle;
+	position: absolute;
+	margin: auto;
+	right: 0;
+	left: 0;
+	width: 100px;
+	height: 100px;
+	border-radius: 3px;
 }
 
 #next {

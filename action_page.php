@@ -4,12 +4,7 @@
 <script src="wordcloud.js" type="text/javascript"></script>
 
 <?php
-
-
-
 require_once "../init.php";
-
-
 
 if(!empty($_POST['genres'])) {
 
@@ -21,105 +16,24 @@ if(!empty($_POST['genres'])) {
 
 }
 
-
-
-
 $start_time = substr($_POST['time_period'], 13, 4);
-
 $end_time = substr($_POST['time_period'], 20, 4);
 
+# Set the amount of results per page
 $limit = 10;
-$offset = 0;
 
-/*
-if (isset($_SESSION['direction'])) {
-	if (!isset($_SESSION['page'])) {
-		unset($_SESSION['direction']);
-		$_SESSION['page'] = 0;
-		$page = 0;
-		$offset = 0;
-		echo "you win";
-	} else if ($_SESSION['direction'] == 1) {
-		if (isset($_SESSION['page'])) {
-			$_SESSION['page'] = $_SESSION['page'] + 1;
-			$page = $_SESSION['page'];
-			$offset = $limit * $page;
-			echo "page session is: ".$page;
-			echo "limit is ".$limit; 
-		}
-	} else if ($_SESSION['direction'] == 0){
-		if (isset($_SESSION['page'])) {
-			if ($_SESSION['page'] > 0) {
-				$_SESSION['page'] = $_SESSION['page'] - 1;
-				$page = $_SESSION['page'];
-				$offset = $limit * $page;
-				echo "page session is: ".$page;
-				echo "limit is ".$limit; 
-			} else if ($_SESSION['page'] == 0) {
-				$page = $_SESSION['page'];
-				$offset = $limit * $page;
-			}
-		} 
-	}	
+# The page cookie keeps track of the page number
+$cookie_name = "page";
+if(!isset($_COOKIE[$cookie_name])) {
+	$page = 0;
+	$offset = 0;
 } else {
-	echo "Direction is not set";
-	if (!isset($_SESSION['page'])) {
-		$_SESSION['page'] = 0;
-		$page = 0;
-		$offset = 0;
-	}
+	$page = $_COOKIE[$cookie_name];
+	# Set offset so the right results for the page number are fetched 
+	$offset = $page * $limit;
 }
 
-if (isset($_SESSION['page'])) {
-	if(isset($_SESSION['direction'])) {
-		if ($_SESSION['direction'] == 1) {
-			echo "yes page yes direction +1 ";
-		
-			$page = $_SESSION['page'];
-			$page = $page++;
-			$_SESSION['page'] = $page;
-			#$page = $_SESSION['page'];
-			echo $_SESSION['page']."andd page".$page;
-			
-			$offset = $limit * $page;
-		} else {
-			$_SESSION['page'] = $_SESSION['page'] - 1;
-			$page = $_SESSION['page'];
-			
-			$offset = $limit * $page;
-		}
-	} else { 
-	echo "no direction";
-		$_SESSION['page'] = 0;
-	$page = $_SESSION['page'];
-	$offset = 0;
-	}
-		
-} else {
-	$_SESSION['page'] = 0;
-	$page = $_SESSION['page'];
-	$offset = 0;
-}
-*/
-/*
-
-if (isset($_SESSION['direction'])) {
-	echo "direction is: ".$_SESSION['direction'];
-	if (isset($_SESSION['page'])) {
-		echo "page is set : ".$_SESSION['page'];
-	} else {
-		echo "page is not set : ";
-	}
-} else {
-	echo "direction is not set: ";
-	if (isset($_SESSION['page'])) {
-		echo "page is set : ".$_SESSION['page'];
-	} else {
-		echo "page is not set : ";
-	}
-}*/
-
-# from offset to offset + limit
+# Get results from offset to offset + limit
 
 $params = [
     'index' => 'lyrics_new',
@@ -180,8 +94,6 @@ $params = [
         ],
 		
 		'highlight' => [
-            // 'pre_tags' => ["<em>"], // not required
-            // 'post_tags' => ["</em>"], // not required
             'fields' => [
                 'lyrics' => new \stdClass()
             ],
@@ -196,9 +108,6 @@ $params = [
 
 
 $results = $client->search($params);
-
-
-
 $number_of_results = $results['hits']['total'];
 
 
@@ -213,10 +122,6 @@ if ($number_of_results > $limit) {
     $x = $number_of_results;
 
 }
-
-
-
-# echo $number_of_results;
 
 
 
@@ -237,10 +142,7 @@ if ($number_of_results > $limit) {
     	$year = $results['hits']['hits'][$i]['_source']['year'];
 
     	$lyrics = $results['hits']['hits'][$i]['_source']['lyrics'];
-		
-		$high_lyrics = $results['hits']['hits'][$i]['highlight']['lyrics'];
-
-
+	
     	$id = $results['hits']['hits'][$i]['_id'];
 
         $n_lyrics = $results['hits']['hits'][$i]['_source']['n_lyrics'];
@@ -268,7 +170,15 @@ if ($number_of_results > $limit) {
 
             <div id="result-snippet">
             <?php echo $artist, ', ', $year; ?>
-			<?php echo "<br/><br/> \"".$high_lyrics[0]."\""; ?>
+			<?php echo "<br/><br/>"; 
+			
+			# Check if there are any matches in the lyrics that are highlighted
+			if (sizeof($results['hits']['hits'][$i]) > 5 ) {
+				$high_lyrics = $results['hits']['hits'][$i]['highlight']['lyrics'];
+				echo "\"".$high_lyrics[0]."\"";
+			}
+			
+			 ?>
             </div>
 			
 			
@@ -278,7 +188,7 @@ if ($number_of_results > $limit) {
 
         <?php
 		
-		
+		# Create the wordcloud
 		$python = `python text_wordcloud.py $n_lyrics`;
 		?>
 		<script>
@@ -297,54 +207,88 @@ if ($number_of_results > $limit) {
 
 
 
-<div id="page_num">
-
-<?php
-
-if (isset($_SESSION['page'])) { 
-	echo "Page: ".$page; 
-	echo "ses: ".$_SESSION['page'];
-} else {
-	echo "Page: 1 Default"; 
-} 
-
-
-?>
-
-</div>
-
-<div>
-<div id="prev">
-<a OnClick=PrevPage()> Previous </a>
-</div>
-
-<div id="next">
-<a OnClick=NextPage()> Next  </a>
-</div>
-
-</div>
-
 
 <script>
 
-function NextPage() {
-		<?php
-	#$_SESSION['page'] = $_SESSION['page'] + 1;
-	$_SESSION['direction'] = 1;
-	?>
-	window.location.reload();
+checkCookie("page");
+	
 
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function PrevPage() {
-	<?php
-	$_SESSION['page'] = $_SESSION['page'] - 1;
-	?>
+// Functions from: https://www.w3schools.com/js/js_cookies.asp
+
+// Get the value of a cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+// Set the cookie if it has not been set yet
+function checkCookie() {
+	console.log(document.cookie);
+    var user = getCookie("page");
+    if (!(user != "")) {
+        setCookie("page", 0, 5);
+    }
+}
+
+// Increment page cookie if next page is pressed
+function NextPage() {
+	var page;
+	page = getCookie("page");
+	document.cookie = "page=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	page++;
+	setCookie("page", page, 5);
 	window.location.reload();
-	
+}
+
+// Decrement page cookie if previous page is pressed and we aren't on the first page
+function PrevPage() {
+	var page;
+	page = getCookie("page");
+	if (page > 0) {
+		document.cookie = "hey=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		page--;
+		setCookie("page", page, 5);
+	}
+	window.location.reload();
 }
 
 </script>
+
+<div>
+<div id="prev">
+<a OnClick='PrevPage();'> Previous </a>
+</div>
+
+
+<div id="page_num">
+<?php
+echo "Page: ".($_COOKIE['page']+1);
+?>
+</div>
+
+<div id="next">
+<a OnClick='NextPage();'> Next  </a>
+</div>
+
+</div>
+
 </body>
 </html>
 

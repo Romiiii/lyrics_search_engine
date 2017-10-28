@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -221,74 +222,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 		?>
 	</div>
-	<!--
-	<div id="guess_genre">
-	<a href="guess_genre.php">Guess Genre </a>-->
+
 	
 	</div>
 	
 	
  <script type="text/javascript">
- /*
- $("#hiphop").change(function () {
-	console.log("checkbox change");
-	if isset
-	if (($key = array_search($del_val, $messages)) !== false) {
-		unset($messages[$key]);
-	}
-	
- });
-	
-	
-	var artist = $("#artist_ac").val();
-	//ar email = $("#email").val();
-	//var password = $("#password").val();
-	//var contact = $("#contact").val();
-	// Returns successful data submission message when the entered information is stored in database.
-	// + '&email1='+ email + '&password1='+ password + '&contact1='+ contact
-	var dataString = 'artist='+ artist ;
-	if(artist=='')
-	{
-	alert("Please Fill All Fields");
-	}
-	else
-	{
-	// AJAX Code To Submit Form.
-	$.ajax({
-	type: "POST",
-	url: "actionpage.php",
-	data: dataString,
-	cache: false,
-	success: function(result){
-	alert(result);
-	}
-	});
-});
-*/
- 
-	 
-	 /*
-$("#lyrics_form").ajaxForm({url: 'actionpage.php', type: 'post'});
-	 window.location.reload();
 
-	 
-    var value = $(this).val();
-    $.ajax({
-        type: "POST",
-        url: "set_home_vid.php",
-        async: true,
-        data: {
-            action1: value // as you are getting in php $_POST['action1'] 
-        },
-        success: function (msg) {
-            alert('Success');
-            if (msg != 'success') {
-                alert('Fail');
-            }
-        }
-    });*/
-
- // Autocompletion for the input fields using the JQuery UI Autocomplete
+ // Autocompletion for artist
  
 $("#artist_ac").autocomplete({
 	source: function(request, response) {
@@ -322,6 +263,8 @@ $("#artist_ac").autocomplete({
 });
 
 
+ // Autocompletion for song
+
 $("#song_ac").autocomplete({
 	source: function(request, response) {
 		var search = { "song": request.term.toLowerCase() };
@@ -352,39 +295,6 @@ $("#song_ac").autocomplete({
 	},
 	minLength: 1
 });
-
-
-$("#lyrics").autocomplete({
-	source: function(request, response) {
-		var search = { "lyrics": request.term.toLowerCase() };
-		// Form elasticsearch query
-		var postData = {
-			"from" : 0, "size" : 5,
-			"query": { "match_phrase_prefix": search },
-		};
-		$.ajax({
-			url: "http://localhost:9200/lyrics_new/lyric_new/_search",
-			type: "POST",
-			dataType: "JSON",
-			data: JSON.stringify(postData),
-			success: function(data) {
-				var a = [];
-				response($.map(data.hits.hits, function(item) {
-					// Don't return duplicate results
-					if (!(a.includes(item._source.lyrics))) {
-						a.push(item._source.lyrics);
-						return {
-						label: item._source.lyrics,
-						id: item._id
-						}
-					}
-				}));
-			},
-		});
-	},
-	minLength: 1
-});
-
 	
 </script>
 
