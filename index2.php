@@ -184,6 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		</div>
 	</form>
 
+	<!-- Time line in a toggler -->
 	<div class='toggler'>
 		<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
