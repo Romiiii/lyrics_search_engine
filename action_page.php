@@ -279,11 +279,11 @@ if ($number_of_results > $limit) {
         <?php
 		
 		
-		#$python = `python text_wordcloud.py $n_lyrics`;
+		$python = `python text_wordcloud.py $n_lyrics`;
 		?>
 		<script>
-		#list = <?php echo $python;?>
-		#WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
+		list = <?php echo $python;?>
+		WordCloud(document.getElementById("<?php echo "wordcloud_".$i ;?>"), { list: list } );
 		</script> 
 		<?php
 			
@@ -323,6 +323,8 @@ if (isset($_SESSION['page'])) {
 </div>
 
 </div>
+
+
 <script>
 
 function NextPage() {

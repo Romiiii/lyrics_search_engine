@@ -13,15 +13,16 @@ session_start();
 
 	<link rel="stylesheet" href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-
-	<link rel="stylesheet" href="/resources/demos/style.css">
+	
 	<link rel="stylesheet" type="text/css" href="style2.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  	<link rel="stylesheet" href="/resources/demos/style.css">
   	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 	
   	<!-- SLIDER PHP + SCRIPT -->
   	<?php
@@ -87,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-<form method="post">
+<form id="lyrics_form" method="post">
 	<!-- HIDDEN FORM ELEMENT FOR PAGINATION -->
 	<input type="hidden" name="send" value="hey" />
 
@@ -170,15 +171,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			<div id="advanced-search-col-right">
 				<!-- Artist field -->
 				<label for="artist">Artist</label>
-				<input type="text" name="artist" value="<?php echo isset($_POST['artist']) ? $_POST['artist'] : '' ?>">
+				<input id ="artist_ac" type="text" name="artist" value="<?php echo isset($_POST['artist']) ? $_POST['artist'] : '' ?>">
 
 				<!-- Year field -->
 				<label for="year">Year</label>
-				<input type="text" name="year" value="<?php echo isset($_POST['year']) ? $_POST['year'] : '' ?>">
+				<input id="year_ac" type="text" name="year" value="<?php echo isset($_POST['year']) ? $_POST['year'] : '' ?>">
 
 				<!-- Song field -->
 				<label for="song">Song</label>
-				<input type="text" name="song_title" value="<?php echo isset($_POST['song_title']) ? $_POST['song_title'] : '' ?>">
+				<input id="song_ac" type="text" name="song_title" value="<?php echo isset($_POST['song_title']) ? $_POST['song_title'] : '' ?>">
 			</div>
 		</div>
 	</form>
@@ -204,10 +205,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	    $(this).find('div').slideToggle();
 	  });
 	});
+	
+	
+	
+	
+	
 	</script>
 
 	<!-- RESULTS -->
-	<div id="result-card-wrapper">
+	<div id="result-card-wrapper" height="1000px">
 		<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
 			require 'action_page.php';
@@ -219,6 +225,168 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	<a href="guess_genre.php">Guess Genre </a>-->
 	
 	</div>
+	
+	
+ <script type="text/javascript">
+ /*
+ $("#hiphop").change(function () {
+	console.log("checkbox change");
+	if isset
+	if (($key = array_search($del_val, $messages)) !== false) {
+		unset($messages[$key]);
+	}
+	
+ });
+	
+	
+	var artist = $("#artist_ac").val();
+	//ar email = $("#email").val();
+	//var password = $("#password").val();
+	//var contact = $("#contact").val();
+	// Returns successful data submission message when the entered information is stored in database.
+	// + '&email1='+ email + '&password1='+ password + '&contact1='+ contact
+	var dataString = 'artist='+ artist ;
+	if(artist=='')
+	{
+	alert("Please Fill All Fields");
+	}
+	else
+	{
+	// AJAX Code To Submit Form.
+	$.ajax({
+	type: "POST",
+	url: "actionpage.php",
+	data: dataString,
+	cache: false,
+	success: function(result){
+	alert(result);
+	}
+	});
+});
+*/
+ 
+	 
+	 /*
+$("#lyrics_form").ajaxForm({url: 'actionpage.php', type: 'post'});
+	 window.location.reload();
+
+	 
+    var value = $(this).val();
+    $.ajax({
+        type: "POST",
+        url: "set_home_vid.php",
+        async: true,
+        data: {
+            action1: value // as you are getting in php $_POST['action1'] 
+        },
+        success: function (msg) {
+            alert('Success');
+            if (msg != 'success') {
+                alert('Fail');
+            }
+        }
+    });*/
+
+ // Autocompletion for the input fields using the JQuery UI Autocomplete
+ 
+$("#artist_ac").autocomplete({
+	source: function(request, response) {
+		var search = { "artist": request.term.toLowerCase() };
+		// Form elasticsearch query
+		var postData = {
+			"from" : 0, "size" : 5,
+			"query": { "match_phrase_prefix": search },
+		};
+		$.ajax({
+			url: "http://localhost:9200/lyrics_new/lyric_new/_search",
+			type: "POST",
+			dataType: "JSON",
+			data: JSON.stringify(postData),
+			success: function(data) {
+				var a = [];
+				response($.map(data.hits.hits, function(item) {
+					// Don't return duplicate results
+					if (!(a.includes(item._source.artist))) {
+						a.push(item._source.artist);
+						return {
+						label: item._source.artist,
+						id: item._id
+						}
+					}
+				}));
+			},
+		});
+	},
+	minLength: 1
+});
+
+
+$("#song_ac").autocomplete({
+	source: function(request, response) {
+		var search = { "song": request.term.toLowerCase() };
+		// Form elasticsearch query
+		var postData = {
+			"from" : 0, "size" : 5,
+			"query": { "match_phrase_prefix": search },
+		};
+		$.ajax({
+			url: "http://localhost:9200/lyrics_new/lyric_new/_search",
+			type: "POST",
+			dataType: "JSON",
+			data: JSON.stringify(postData),
+			success: function(data) {
+				var a = [];
+				response($.map(data.hits.hits, function(item) {
+					// Don't return duplicate results
+					if (!(a.includes(item._source.song))) {
+						a.push(item._source.song);
+						return {
+						label: item._source.song,
+						id: item._id
+						}
+					}
+				}));
+			},
+		});
+	},
+	minLength: 1
+});
+
+
+$("#lyrics").autocomplete({
+	source: function(request, response) {
+		var search = { "lyrics": request.term.toLowerCase() };
+		// Form elasticsearch query
+		var postData = {
+			"from" : 0, "size" : 5,
+			"query": { "match_phrase_prefix": search },
+		};
+		$.ajax({
+			url: "http://localhost:9200/lyrics_new/lyric_new/_search",
+			type: "POST",
+			dataType: "JSON",
+			data: JSON.stringify(postData),
+			success: function(data) {
+				var a = [];
+				response($.map(data.hits.hits, function(item) {
+					// Don't return duplicate results
+					if (!(a.includes(item._source.lyrics))) {
+						a.push(item._source.lyrics);
+						return {
+						label: item._source.lyrics,
+						id: item._id
+						}
+					}
+				}));
+			},
+		});
+	},
+	minLength: 1
+});
+
+	
+</script>
+
 
 </body>
 </html>
